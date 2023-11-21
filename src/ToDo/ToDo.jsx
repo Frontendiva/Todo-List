@@ -45,12 +45,10 @@ const ToDo = ({ firestore }) => {
 
       // Обновляем данные в локальном хранилище
       localStorage.setItem("todos", JSON.stringify([...todos, newTodo]));
-
-      // Сохранение данных в Firebase
-      await firestore.collection("todos").add(newTodo);
-
       // Очистка строки ввода
       setName("");
+      // Сохранение данных в Firebase
+      await firestore.collection("todos").add(newTodo);
     }
   };
 
@@ -69,7 +67,8 @@ const ToDo = ({ firestore }) => {
     // Обновляем данные в локальном хранилище после изменения
     localStorage.setItem("todos", JSON.stringify(todos));
   };
-
+  console.log("ghjhdxjdxj");
+  console.log(name);
   return (
     <>
       <div className="container">
@@ -84,6 +83,7 @@ const ToDo = ({ firestore }) => {
               removeToDo={() => removeToDo(todo._id)}
             />
           ))}
+
         <input
           type="text"
           value={name}
